@@ -1,6 +1,6 @@
 "use client";
- 
-import { 
+
+import {
     Navbar,
     Collapse,
     Typography,
@@ -11,14 +11,18 @@ import {
     MenuHandler,
     MenuList,
     MenuItem,
-    ThemeProvider, 
+    ThemeProvider,
     Button,
     MobileNav,
-    Avatar
+    Avatar,
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
 } from "@material-tailwind/react";
- 
-export { 
-    ThemeProvider, 
+
+export {
+    ThemeProvider,
     Button,
     Navbar,
     Collapse,
@@ -31,5 +35,9 @@ export {
     MenuList,
     MenuItem,
     MobileNav,
-    Avatar
+    Avatar,
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
 };

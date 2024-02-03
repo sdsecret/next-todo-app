@@ -1,8 +1,10 @@
 "use client";
+import { UserButton } from '@clerk/nextjs';
 import { useState, useEffect, createElement } from 'react';
 import Image from "next/image";
+import { SignOutButton, SignInButton, SignUpButton } from '@clerk/nextjs';
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Avatar, Collapse, Typography, MobileNav, IconButton, Navbar, Button, Menu, MenuHandler, MenuList, MenuItem } from '@/components/Material/material';
+import { Card, Avatar, Collapse, Typography, MobileNav, IconButton, Navbar, Button, Menu, MenuHandler, MenuList, MenuItem } from '@/components/Material/material';
 import {
   CubeTransparentIcon,
   UserCircleIcon,
@@ -161,14 +163,14 @@ export default function Nav() {
     };
   }, []);
   return (
-    <div className='mx-2 sticky top-4'>
-      <Navbar className="sticky mx-auto mt-4 max-w-screen-xl top-4 z-10 h-max px-4 py-2 lg:px-8 lg:py-3">
+
+    <Navbar className="sticky mx-auto mt-4 max-w-screen-xl top-4 z-10 h-max px-4 py-2 lg:px-8 lg:py-3">
       <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
           href="#"
           variant="h6"
-          className="mr-4 cursor-pointer py-1.5 font-medium"
+          className="mr-4 cursor-pointer py-1.5 font-semibold"
         >
           {"Today's Tasks"}
         </Typography>
@@ -177,21 +179,38 @@ export default function Nav() {
             {/* <NavList/> */}
           </div>
           <div className="flex items-center gap-x-1">
-            <Button
-              variant="text"
-              size="sm"
-              className="hidden lg:inline-block"
-            >
-              <span>Log In</span>
-            </Button>
-            <Button
-              variant="gradient"
-              size="sm"
-              className="hidden lg:inline-block"
-            >
-              <span>Sign in</span>
-            </Button>
-            <ProfileMenu />
+            <SignOutButton>
+              <Button
+                variant="text"
+                size="sm"
+                className="hidden lg:inline-block"
+              >
+                <span>Logout</span>
+              </Button>
+            </SignOutButton>
+
+            <SignInButton mode='modal'>
+              <Button
+                variant="text"
+                size="sm"
+                className="hidden lg:inline-block"
+              >
+                <span>Log In</span>
+              </Button>
+            </SignInButton>
+
+            <SignUpButton>
+              <Button
+                variant="gradient"
+                size="sm"
+                className="hidden lg:inline-block"
+              >
+                <span>Sign in</span>
+              </Button>
+            </SignUpButton>
+
+            {/* <ProfileMenu /> */}
+            <UserButton />
           </div>
           <IconButton
             variant="text"
@@ -244,6 +263,5 @@ export default function Nav() {
         </div>
       </Collapse>
     </Navbar>
-    </div>
   )
 }

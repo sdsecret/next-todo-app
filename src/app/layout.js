@@ -1,5 +1,6 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import { ClerkProvider } from '@clerk/nextjs';
 import { ThemeProvider } from '@/components/Material/material';
 // Components
 import Navbar from "@/components/Navbar";
@@ -17,13 +18,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <ThemeProvider>
-        <body className={roboto.className}>
-          <Navbar />
-          {children}
-        </body>
-      </ThemeProvider>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <ThemeProvider>
+          <body className={roboto.className}>
+            <div className='mx-2 sticky top-4'>
+              <Navbar />
+              <main className="mx-auto max-w-screen-xl mt-4 h-max">
+                {children}
+              </main>
+            </div>
+          </body>
+        </ThemeProvider>
+      </html>
+    </ClerkProvider>
   );
 }
