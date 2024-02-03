@@ -1,13 +1,13 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
-
+import { ThemeProvider } from '@/components/Material/material';
 // Components
-import { Navbar } from "@/components/Navbar";
+import Navbar from "@/components/Navbar";
 
-const roboto = Roboto({ 
-  subsets: ["latin"], 
+const roboto = Roboto({
+  subsets: ["latin"],
   style: ['normal', 'italic'],
-  weight:['300','400','500','700'] 
+  weight: ['300', '400', '500', '700']
 });
 
 export const metadata = {
@@ -18,10 +18,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
-        <Navbar/>
-        {children}
-      </body>
+      <ThemeProvider>
+        <body className={roboto.className}>
+          <Navbar />
+          {children}
+        </body>
+      </ThemeProvider>
     </html>
   );
 }
